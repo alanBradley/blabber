@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blab.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @blab.body %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @blab.url %>
+</p>
+
+<%= link_to 'Edit', edit_blab_path(@blab) %> |
+<%= link_to 'Back', blabs_path %>

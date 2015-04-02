@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Blabs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blabs.each do |blab| %>
+      <tr>
+        <td><%= blab.title %></td>
+        <td><%= blab.body %></td>
+        <td><%= blab.url %></td>
+        <td><%= link_to 'Show', blab %></td>
+        <td><%= link_to 'Edit', edit_blab_path(blab) %></td>
+        <td><%= link_to 'Destroy', blab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blab', new_blab_path %>
