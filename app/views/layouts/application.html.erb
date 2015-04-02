@@ -8,10 +8,25 @@
 </head>
 <body>
 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <!-- User authentication - Links hid based on user signed in or not -->
+  <% if user_signed_in? %>
+    <ul>
+      <li><%= link_to 'Submit Blab', new_blab_path %></li>
+      <li><%= link_to 'Account', edit_user_registration_path %></li>
+      <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+    </ul>
+  <% else %>
+    <ul>
+      <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <li><%= link_to 'Sign in', new_user_session_path %></li>
+    </ul>
+  <% end %>
+  
 <%= yield %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
 </body>
 </html>
