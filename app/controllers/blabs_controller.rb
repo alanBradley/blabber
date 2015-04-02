@@ -1,5 +1,8 @@
 class BlabsController < ApplicationController
   before_action :set_blab, only: [:show, :edit, :update, :destroy]
+  # added filter to stop non-users being able to delete blabs otherwise deletion of content could be done by anyone visiting the application. This code brings user back to index page if any blab option is clicked other than show and index
+  # to be edited in views so links don't show.
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /blabs
   # GET /blabs.json
@@ -14,7 +17,7 @@ class BlabsController < ApplicationController
 
   # GET /blabs/new
   def new
-    @blab = Blab.new
+    @blab = current_user.blabs.build
   end
 
   # GET /blabs/1/edit
@@ -24,7 +27,7 @@ class BlabsController < ApplicationController
   # POST /blabs
   # POST /blabs.json
   def create
-    @blab = Blab.new(blab_params)
+    @blab = current_user.blabs.build(blab_params)
 
     respond_to do |format|
       if @blab.save

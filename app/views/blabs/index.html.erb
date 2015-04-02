@@ -19,13 +19,15 @@
         <td><%= blab.body %></td>
         <td><%= blab.url %></td>
         <td><%= link_to 'Show', blab %></td>
-        <td><%= link_to 'Edit', edit_blab_path(blab) %></td>
-        <td><%= link_to 'Destroy', blab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- If statement to hide edit and destroy buttons for non-logged in users -->        
+        <% if blab.user == current_user %>
+          <td><%= link_to 'Edit', edit_blab_path(blab) %></td>
+          <td><%= link_to 'Destroy', blab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>  
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Blab', new_blab_path %>
+
