@@ -1,4 +1,4 @@
-<%= form_for(@blab) do |f| %>
+ <%= form_for(@blab) do |f| %>
   <% if @blab.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@blab.errors.count, "error") %> prohibited this blab from being saved:</h2>
@@ -11,19 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>
