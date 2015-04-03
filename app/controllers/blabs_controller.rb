@@ -64,6 +64,20 @@ class BlabsController < ApplicationController
     end
   end
 
+  # upvote and downvote methods with redirect to back button
+  def upvote
+    @blab = Blab.find(params[:id])
+    @blab.upvote_by current_user
+    redirect_to :back
+  end
+  
+  def downvote
+    @blab = Blab.find(params[:id])
+    @blab.downvote_by current_user
+    redirect_to :back
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blab

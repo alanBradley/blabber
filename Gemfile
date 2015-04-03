@@ -20,6 +20,9 @@ gem 'devise', '~> 3.4.1'
 #added gem file - bootstrap for simple html/css structures etc.
 gem 'bootstrap-sass', '~> 3.3.4'
 
+# addded to allow voting on my blabs
+gem 'acts_as_votable', '~> 0.10.0'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

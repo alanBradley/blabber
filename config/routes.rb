@@ -3,7 +3,15 @@ Rails.application.routes.draw do
   resources :blabs
   
   root to: "blabs#index"
-
+  
+  resources :blabs do
+    member do
+      put "like" => "blabs#upvote"
+      put "dislike" => "blabs#downvote"
+    end
+  end
+  
+      
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
