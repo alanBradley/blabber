@@ -26,6 +26,10 @@ gem 'acts_as_votable', '~> 0.10.0'
 # adding this to allow easy uploading of blabber posts
 gem 'simple_form', '~> 3.1.0'
 
+# added to allow image uploading
+# installed imageconverter to allow converting of images via this gem
+gem 'paperclip', '~> 4.2.1'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
