@@ -3,5 +3,6 @@ class Blab < ActiveRecord::Base
     acts_as_votable
     #association added so that non-user can skip to url to add a blab
     belongs_to :user
+    belongs_to :category
     
 end

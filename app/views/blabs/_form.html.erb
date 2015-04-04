@@ -23,6 +23,9 @@
     <%= f.label :url %><br>
     <%= f.text_field :url, class: "form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.collection_select :category_id , Category.all, :id, :name, {prompt: "Choose a category"} %><br>
+  </div>
   <br>
   <div class="form-group">
     <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>

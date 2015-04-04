@@ -7,7 +7,8 @@ class BlabsController < ApplicationController
   # GET /blabs
   # GET /blabs.json
   def index
-    @blabs = Blab.all
+    # index page ordering all blabs by newest first (Top-down)
+    @blabs = Blab.all.order("created_at DESC")
   end
 
   # GET /blabs/1
@@ -86,6 +87,7 @@ class BlabsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blab_params
-      params.require(:blab).permit(:title, :body, :url)
+    # added permit params here allows for the data to be saved to the database
+      params.require(:blab).permit(:title, :body, :url, :category_id)
     end
 end
