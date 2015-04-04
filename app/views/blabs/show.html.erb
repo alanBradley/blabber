@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @blab.image.url(:medium) %>
+<%= image_tag @blab.image.url(:large) %>
 
 <p>
   <strong>Title:</strong>
@@ -17,5 +17,22 @@
   <%= @blab.url %>
 </p>
 
-<%= link_to 'Edit', edit_blab_path(@blab) %> |
-<%= link_to 'Back', blabs_path %>
+<p>
+  <strong>Published by:</strong>
+  <%= @blab.user.email %>
+</p>
+
+<h3 class="comments_title">
+  <%= @blab.comments.count %> Comments
+</h3>
+
+<div id="comments">
+  <%= render :partial => @blab.comments %>
+</div>
+<%= simple_form_for [@blab, Comment.new]  do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add Comment", class: "btn btn-primary" %>
+<% end %>

@@ -1,7 +1,8 @@
 <% @blabs.each do |blab| %>
   <div class="link row clearfix">
-    <h2>
+   
         <%= image_tag blab.image.url(:thumb) %><br>
+    <h2>
         <%= link_to blab.title, blab %><br>
         <small class="author">Submitted <%= time_ago_in_words(blab.created_at) %> ago by <%= blab.user.email %></small>
     </h2>
@@ -9,7 +10,7 @@
     <div class="btn-group">
       <!-- for each link.its adding a link to the like link path and then making it a button. also added is a link to the url button -->
         <a class="btn btn-default btn-sm" href="<%= blab.url %>">Visit Site</a>
-       <%= link_to like_blab_path(blab), method: :put, class: "btn btn-default btn-sm" do %>
+        <%= link_to like_blab_path(blab), method: :put, class: "btn btn-default btn-sm" do %>
           <span class="glyphicon glyphicon-chevron-up"></span>
           Upvote
           <%= blab.get_upvotes.size %>
