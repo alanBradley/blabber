@@ -1,7 +1,6 @@
 <% @blabs.each do |blab| %>
   <div class="link row clearfix">
-   
-        <%= image_tag blab.image.url(:thumb) %><br>
+        <%= image_tag blab.image.url(:medium) %><br>
     <h2>
         <%= link_to blab.title, blab %><br>
         <small class="author">Submitted <%= time_ago_in_words(blab.created_at) %> ago by <%= blab.user.email %></small>

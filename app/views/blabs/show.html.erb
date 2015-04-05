@@ -22,10 +22,40 @@
   <%= @blab.user.email %>
 </p>
 
+
+<!-- like & dislike buttons added to show blab page -->
+<div class="btn-group pull-right">
+  <%= link_to like_blab_path(@blab), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+    Upvote
+    <%= @blab.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_blab_path(@blab), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-down">
+    Downvote
+    <%= @blab.get_downvotes.size %>
+  <% end %>
+</div>
+
+<!-- Visit URL link button -->
+<div class="btn-group">
+	<%= link_to 'Visit URL', @blab.url, class: "btn btn-primary" %>
+</div>
+
+<!-- edit and destroy button coded only so that the user who created the code can see the buttons -->
+<% if @blab.user == current_user -%>
+	<div class="btn-group">
+		<%= link_to 'Edit', edit_blab_path(@blab), class: "btn btn-default" %>
+		<%= link_to 'Destroy', @blab, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+	</div>
+<% end %>
+
+<!-- comments section -->
 <h3 class="comments_title">
   <%= @blab.comments.count %> Comments
 </h3>
 
+<!-- comments rendered to comments controller create method to be created upon submit -->
 <div id="comments">
   <%= render :partial => @blab.comments %>
 </div>
@@ -36,3 +66,7 @@
   <br>
   <%= f.submit "Add Comment", class: "btn btn-primary" %>
 <% end %>
+<br>
+
+
+

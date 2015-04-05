@@ -87,7 +87,7 @@ class BlabsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blab_params
-    # added permit params here allows for the data to be saved to the database
+    # added permit attribute params here allows for the data to be saved to the database
       params.require(:blab).permit(:title, :body, :url, :category_id, :image)
     end
 end
