@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+	background: #AA4847;
+}
+
 #logo {
 	font-size: 26px;
 	font-weight: 700;
@@ -31,6 +35,7 @@
 #main_content {
 	#content {
 		float: none;
+		background: white;
 	}
 	padding-bottom: 100px;
 	.link {

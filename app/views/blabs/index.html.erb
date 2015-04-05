@@ -1,12 +1,25 @@
+<!-- if user not signed in - will show below message on index page -->
+<% if !user_signed_in? %>
+  <div class="jumpotron">
+    <h1> Blab about what makes your city special </h1>
+    <p><%= link_to "Sign Up To Write A Blab", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+  </div>
+<% end %>
+
+<!-- for each blap -->
 <% @blabs.each do |blab| %>
-  <div class="link row clearfix">
+    <!-- clear row to sperate each blab -->
+    <div class="link row clearfix">
         <%= image_tag blab.image.url(:medium) %><br>
+    
     <h2>
+    <!-- Blab title  and followed by submitted by details -->
         <%= link_to blab.title, blab %><br>
         <small class="author">Submitted <%= time_ago_in_words(blab.created_at) %> ago by <%= blab.user.email %></small>
     </h2>
     
-    <div class="btn-group">
+    <!-- voting buttons seperated withing its own div -->
+      <div class="btn-group">
       <!-- for each link.its adding a link to the like link path and then making it a button. also added is a link to the url button -->
         <a class="btn btn-default btn-sm" href="<%= blab.url %>">Visit Site</a>
         <%= link_to like_blab_path(blab), method: :put, class: "btn btn-default btn-sm" do %>
@@ -19,6 +32,6 @@
           Downvote
           <%= blab.get_downvotes.size %>
         <% end %>
-    </div>
-  </div>
+      </div><!-- voting buttons div -->
+    </div> <!-- Blab div -->
 <% end %>

@@ -1,0 +1,27 @@
+<!-- navbar styling using Bootsrap -->
+    <!-- container for header with added bottom padding -->
+  <header class="navbar navbar-default" role="navigation">
+    <!-- Actual navbar contained within the navbar default -->
+    <div class="navbar-inner">
+        <!-- caontainer wraping logo and buttons -->
+       <div class="container">
+           <!-- logo container pulled left -->
+         <div id="logo" class="navbar-brand"><%= link_to "Blabber", root_path %></div>
+            <!-- User authentication - Links hidden based on user signed in or not -->
+            <% if user_signed_in? %>
+                <!-- logo buttons conatiner pulled to right -->
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to 'Submit Blab', new_blab_path %></li>
+                <li><%= link_to 'Account', edit_user_registration_path %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              </ul>
+            <% else %>
+              <ul class="nav navbar-nav pull-right">
+                <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign in', new_user_session_path %></li>
+              </ul>
+            <% end %>
+          </nav>
+       </div> 
+    </div>
+  </header>

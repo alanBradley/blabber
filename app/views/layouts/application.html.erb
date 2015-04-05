@@ -7,29 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- navbar styling using Bootsrap -->
-  <header class="navbar navbar-default" role="navigation">
-    <div class="navbar-inner">
-       <div class="container">
-         <div id="logo" class="navbar-brand"><%= link_to "Blabber", root_path %></div>
-          <nav class="collapse navbar-collapse navbar-ex1-collapse">
-            <!-- User authentication - Links hidden based on user signed in or not -->
-            <% if user_signed_in? %>
-              <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to 'Submit Blab', new_blab_path %></li>
-                <li><%= link_to 'Account', edit_user_registration_path %></li>
-                <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-              </ul>
-            <% else %>
-              <ul class="nav navbar-nav pull-right">
-                <li><%= link_to 'Sign up', new_user_registration_path %></li>
-                <li><%= link_to 'Sign in', new_user_session_path %></li>
-              </ul>
-            <% end %>
-          </nav>
-       </div> 
-    </div>
-  </header>
+  <!-- renders the code for the navbar bootstrap saved in the _header file / cleans up application page by sepeating content-->
+  <%= render 'layouts/header' %>
+  
   
   <div id="main_content" class="container">
   <p class="notice"><%= notice %></p>
